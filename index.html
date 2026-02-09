@@ -2,15 +2,860 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://saimonapps.github.io/Saimon_Apps/">
-    <title>S@imon Apps - Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaimonApps.it - Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* Subtle background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Language Selector */
+        .lang-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .lang-dropdown {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 10px 16px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            min-width: 140px;
+        }
+        
+        .lang-dropdown:focus {
+            outline: none;
+            border-color: #10b981;
+        }
+        
+        .lang-dropdown option {
+            background: #1a1a2e;
+            color: white;
+            padding: 10px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo-img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #10b981;
+        }
+        
+        .app-card {
+            display: flex;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        .app-icon.sphera {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96e6a1);
+        }
+        
+        .app-icon.pong {
+            background: linear-gradient(135deg, #00d4ff, #7b2cbf, #ff006e);
+        }
+        
+        .app-icon.icashly {
+            background: linear-gradient(135deg, #0D9488, #34D399, #FCD34D);
+        }
+        
+        .app-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .app-info p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .app-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #10b981;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+
+        .app-badge.coming {
+            color: #fbbf24;
+        }
+
+        .app-badge.beta {
+            color: #3b82f6;
+        }
+
+        .app-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-appstore {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .btn-appstore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-testflight {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-testflight:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        /* Android Coming Soon */
+        .android-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .android-section h3 {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .android-section p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* TestFlight Info Box */
+        .testflight-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .testflight-info a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .testflight-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .support-info {
+            text-align: center;
+        }
+        
+        .support-info p {
+            margin-bottom: 20px;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #10b981, #3b82f6);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .privacy-content {
+            color: #d0d0d0;
+            line-height: 1.7;
+        }
+        
+        .privacy-content h3 {
+            color: #10b981;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .privacy-content h4 {
+            color: #3b82f6;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+        
+        .privacy-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .privacy-content li {
+            margin-bottom: 8px;
+        }
+
+        .privacy-content a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #606060;
+        }
+        
+        footer a {
+            color: #10b981;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .logo-img {
+                max-width: 250px;
+            }
+            
+            .app-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .app-buttons {
+                justify-content: center;
+            }
+            
+            .lang-selector {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .lang-dropdown {
+                min-width: 120px;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="https://saimonapps.github.io/Saimon_Apps/">S@imon Apps</a>...</p>
+    <!-- Language Selector -->
+    <div class="lang-selector">
+        <select class="lang-dropdown" id="lang-select" onchange="setLanguage(this.value)">
+            <option value="en">🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="pt">🇧🇷 Português</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="ko">🇰🇷 한국어</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="SaimonApps.it" class="logo-img">
+            <p class="tagline" 
+               data-en="Mobile Games & Apps" 
+               data-it="Giochi e App Mobile"
+               data-es="Juegos y Apps Móviles"
+               data-fr="Jeux et Apps Mobiles"
+               data-de="Mobile Spiele & Apps"
+               data-pt="Jogos e Apps Móveis"
+               data-zh="移动游戏与应用"
+               data-ru="Мобильные игры и приложения"
+               data-ja="モバイルゲーム＆アプリ"
+               data-ko="모바일 게임 & 앱">Mobile Games & Apps</p>
+        </header>
+        
+        <section id="apps">
+            <h2 data-en="📱 Our Apps" 
+                data-it="📱 Le Nostre App"
+                data-es="📱 Nuestras Apps"
+                data-fr="📱 Nos Apps"
+                data-de="📱 Unsere Apps"
+                data-pt="📱 Nossos Apps"
+                data-zh="📱 我们的应用"
+                data-ru="📱 Наши приложения"
+                data-ja="📱 アプリ一覧"
+                data-ko="📱 우리의 앱">📱 Our Apps</h2>
+            
+            <!-- Pong Ultimate Neon -->
+            <div class="app-card">
+                <div class="app-icon pong">
+                    <img src="pong-icon.png" alt="PongUltimateNeon">
+                </div>
+                <div class="app-info">
+                    <h3>Pong Ultimate Neon</h3>
+                    <p data-en="The classic Pong reimagined with vibrant neon aesthetics! Two game modes: Classic for purists and Ultimate with power-ups, destructible blocks, and multiball chaos. Challenge the AI across three difficulty levels." 
+                       data-it="Il classico Pong reinventato con un'estetica neon vibrante! Due modalità: Classica per i puristi e Ultimate con power-up, blocchi distruttibili e caos multiball. Sfida l'IA su tre livelli di difficoltà."
+                       data-es="¡El clásico Pong reimaginado con una estética neón vibrante! Dos modos de juego: Clásico para puristas y Ultimate con potenciadores, bloques destructibles y caos multiball. Desafía a la IA en tres niveles de dificultad."
+                       data-fr="Le Pong classique réinventé avec une esthétique néon vibrante ! Deux modes de jeu : Classique pour les puristes et Ultimate avec des bonus, des blocs destructibles et le chaos multiball. Défiez l'IA sur trois niveaux de difficulté."
+                       data-de="Das klassische Pong neu interpretiert mit lebhafter Neon-Ästhetik! Zwei Spielmodi: Klassisch für Puristen und Ultimate mit Power-ups, zerstörbaren Blöcken und Multiball-Chaos. Fordern Sie die KI auf drei Schwierigkeitsstufen heraus."
+                       data-pt="O clássico Pong reimaginado com estética neon vibrante! Dois modos de jogo: Clássico para puristas e Ultimate com power-ups, blocos destrutíveis e caos multiball. Desafie a IA em três níveis de dificuldade."
+                       data-zh="经典乒乓游戏以鲜艳霓虹美学重新呈现！两种游戏模式：经典模式适合纯粹主义者，终极模式包含道具、可破坏方块和多球混战。在三个难度级别中挑战AI。"
+                       data-ru="Классический Pong в новом исполнении с яркой неоновой эстетикой! Два режима игры: Классический для пуристов и Ultimate с бонусами, разрушаемыми блоками и хаосом мультибола. Бросьте вызов ИИ на трёх уровнях сложности."
+                       data-ja="クラシックなポンが鮮やかなネオン美学で再登場！2つのゲームモード：純粋主義者向けのクラシックと、パワーアップ、破壊可能ブロック、マルチボールカオスのアルティメット。3つの難易度でAIに挑戦。"
+                       data-ko="클래식 퐁이 생생한 네온 미학으로 재탄생! 두 가지 게임 모드: 순수주의자를 위한 클래식과 파워업, 파괴 가능한 블록, 멀티볼 카오스가 있는 얼티밋. 세 가지 난이도에서 AI에 도전하세요.">The classic Pong reimagined with vibrant neon aesthetics! Two game modes: Classic for purists and Ultimate with power-ups, destructible blocks, and multiball chaos. Challenge the AI across three difficulty levels.</p>
+                    <span class="app-badge">🍎 iOS</span>
+                    <div class="app-buttons">
+                        <a href="https://apps.apple.com/app/pongultimateneon/id6757593794" target="_blank" class="btn btn-appstore" data-en="⬇ App Store" data-it="⬇ App Store" data-es="⬇ App Store" data-fr="⬇ App Store" data-de="⬇ App Store" data-pt="⬇ App Store" data-zh="⬇ App Store" data-ru="⬇ App Store" data-ja="⬇ App Store" data-ko="⬇ App Store">⬇ App Store</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sphera Puzzle -->
+            <div class="app-card">
+                <div class="app-icon sphera">
+                    <img src="sphera-icon.png" alt="Sphera">
+                </div>
+                <div class="app-info">
+                    <h3>Sphera Puzzle</h3>
+                    <p data-en="A colorful mind puzzle where every move matters. Match vibrant spheres, relax your mind, and enjoy hundreds of hand-crafted levels. No timers, no stress - just you and the colors." 
+                       data-it="Un puzzle colorato dove ogni mossa conta. Abbina sfere colorate, rilassa la mente e goditi centinaia di livelli creati a mano. Niente timer, niente stress - solo tu e i colori."
+                       data-es="Un rompecabezas colorido donde cada movimiento cuenta. Combina esferas vibrantes, relaja tu mente y disfruta de cientos de niveles diseñados a mano. Sin cronómetros, sin estrés - solo tú y los colores."
+                       data-fr="Un puzzle coloré où chaque mouvement compte. Associez des sphères vibrantes, détendez votre esprit et profitez de centaines de niveaux créés à la main. Pas de chrono, pas de stress - juste vous et les couleurs."
+                       data-de="Ein farbenfrohes Denkspiel, bei dem jeder Zug zählt. Kombinieren Sie lebhafte Kugeln, entspannen Sie Ihren Geist und genießen Sie hunderte handgefertigte Level. Keine Timer, kein Stress - nur Sie und die Farben."
+                       data-pt="Um quebra-cabeça colorido onde cada movimento importa. Combine esferas vibrantes, relaxe sua mente e aproveite centenas de níveis criados à mão. Sem cronômetros, sem estresse - apenas você e as cores."
+                       data-zh="一款色彩缤纷的益智游戏，每一步都至关重要。匹配鲜艳的球体，放松心情，享受数百个精心设计的关卡。没有计时器，没有压力——只有你和色彩。"
+                       data-ru="Красочная головоломка, где важен каждый ход. Сочетайте яркие сферы, расслабьте разум и наслаждайтесь сотнями уровней ручной работы. Без таймеров, без стресса — только вы и цвета."
+                       data-ja="一手一手が大切なカラフルパズル。鮮やかな球体をマッチさせ、心をリラックスさせながら、手作りの何百ものレベルを楽しみましょう。タイマーなし、ストレスなし — あなたと色だけ。"
+                       data-ko="모든 움직임이 중요한 컬러풀 퍼즐. 생생한 구체를 맞추고, 마음을 편안하게 하며, 수백 개의 핸드메이드 레벨을 즐기세요. 타이머 없음, 스트레스 없음 - 오직 당신과 색상만.">A colorful mind puzzle where every move matters. Match vibrant spheres, relax your mind, and enjoy hundreds of hand-crafted levels. No timers, no stress - just you and the colors.</p>
+                    <span class="app-badge coming" data-en="🚀 Coming Soon" data-it="🚀 In Arrivo" data-es="🚀 Próximamente" data-fr="🚀 Bientôt" data-de="🚀 Demnächst" data-pt="🚀 Em Breve" data-zh="🚀 即将推出" data-ru="🚀 Скоро" data-ja="🚀 近日公開" data-ko="🚀 출시 예정">🚀 Coming Soon</span>
+                    <span class="app-badge">🍎 iOS</span>
+                    <div class="app-buttons">
+                        <a href="https://testflight.apple.com/join/zpV4jM5c" target="_blank" class="btn btn-testflight" data-en="🧪 TestFlight Beta" data-it="🧪 Beta TestFlight" data-es="🧪 Beta TestFlight" data-fr="🧪 Beta TestFlight" data-de="🧪 TestFlight Beta" data-pt="🧪 Beta TestFlight" data-zh="🧪 TestFlight 测试版" data-ru="🧪 TestFlight Бета" data-ja="🧪 TestFlight ベータ" data-ko="🧪 TestFlight 베타">🧪 TestFlight Beta</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iCashly -->
+            <div class="app-card">
+                <div class="app-icon icashly">
+                    <img src="icashly-icon.png" alt="iCashly">
+                </div>
+                <div class="app-info">
+                    <h3>iCashly</h3>
+                    <p data-en="Smart budget tracking made simple. Take control of your finances with beautiful charts, custom categories, and intelligent insights. Set budgets, track expenses, and watch your savings grow." 
+                       data-it="Gestione del budget resa semplice. Prendi il controllo delle tue finanze con grafici accattivanti, categorie personalizzabili e suggerimenti intelligenti. Imposta budget, traccia le spese e guarda crescere i tuoi risparmi."
+                       data-es="Seguimiento de presupuesto inteligente y sencillo. Toma el control de tus finanzas con gráficos atractivos, categorías personalizadas e información inteligente. Establece presupuestos, rastrea gastos y observa crecer tus ahorros."
+                       data-fr="Suivi budgétaire intelligent simplifié. Prenez le contrôle de vos finances avec de beaux graphiques, des catégories personnalisées et des analyses intelligentes. Définissez des budgets, suivez vos dépenses et regardez vos économies croître."
+                       data-de="Intelligentes Budget-Tracking leicht gemacht. Übernehmen Sie die Kontrolle über Ihre Finanzen mit ansprechenden Diagrammen, benutzerdefinierten Kategorien und intelligenten Einblicken. Legen Sie Budgets fest, verfolgen Sie Ausgaben und beobachten Sie, wie Ihre Ersparnisse wachsen."
+                       data-pt="Controle de orçamento inteligente simplificado. Assuma o controle de suas finanças com gráficos bonitos, categorias personalizadas e insights inteligentes. Defina orçamentos, acompanhe despesas e veja suas economias crescerem."
+                       data-zh="智能预算追踪，简单易用。通过精美图表、自定义分类和智能洞察掌控您的财务。设定预算、追踪支出，看着您的储蓄增长。"
+                       data-ru="Умный контроль бюджета — просто и удобно. Возьмите финансы под контроль с красивыми графиками, настраиваемыми категориями и умной аналитикой. Устанавливайте бюджеты, отслеживайте расходы и наблюдайте за ростом сбережений."
+                       data-ja="スマートな予算管理をシンプルに。美しいチャート、カスタムカテゴリ、インテリジェントな分析で財務を管理。予算を設定し、支出を追跡し、貯蓄の成長を見守りましょう。"
+                       data-ko="스마트한 예산 관리를 간편하게. 아름다운 차트, 맞춤 카테고리, 지능형 인사이트로 재정을 관리하세요. 예산을 설정하고, 지출을 추적하며, 저축이 늘어나는 것을 지켜보세요.">Smart budget tracking made simple. Take control of your finances with beautiful charts, custom categories, and intelligent insights. Set budgets, track expenses, and watch your savings grow.</p>
+                    <span class="app-badge beta" data-en="🧪 Beta" data-it="🧪 Beta" data-es="🧪 Beta" data-fr="🧪 Bêta" data-de="🧪 Beta" data-pt="🧪 Beta" data-zh="🧪 测试版" data-ru="🧪 Бета" data-ja="🧪 ベータ" data-ko="🧪 베타">🧪 Beta</span>
+                    <span class="app-badge">🍎 iOS</span>
+                    <div class="app-buttons">
+                        <a href="https://testflight.apple.com/join/3SCXpUqD" target="_blank" class="btn btn-testflight" data-en="🧪 TestFlight Beta" data-it="🧪 Beta TestFlight" data-es="🧪 Beta TestFlight" data-fr="🧪 Beta TestFlight" data-de="🧪 TestFlight Beta" data-pt="🧪 Beta TestFlight" data-zh="🧪 TestFlight 测试版" data-ru="🧪 TestFlight Бета" data-ja="🧪 TestFlight ベータ" data-ko="🧪 TestFlight 베타">🧪 TestFlight Beta</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TestFlight Info -->
+            <div class="testflight-info">
+                <span data-en="💡 What is TestFlight? It's Apple's official app for testing beta versions of apps before they're released. " 
+                      data-it="💡 Cos'è TestFlight? È l'app ufficiale Apple per testare le versioni beta delle app prima del rilascio. "
+                      data-es="💡 ¿Qué es TestFlight? Es la app oficial de Apple para probar versiones beta de apps antes de su lanzamiento. "
+                      data-fr="💡 Qu'est-ce que TestFlight ? C'est l'application officielle d'Apple pour tester les versions bêta des apps avant leur sortie. "
+                      data-de="💡 Was ist TestFlight? Es ist Apples offizielle App zum Testen von Beta-Versionen von Apps vor der Veröffentlichung. "
+                      data-pt="💡 O que é TestFlight? É o app oficial da Apple para testar versões beta de apps antes do lançamento. "
+                      data-zh="💡 什么是TestFlight？这是Apple官方用于在发布前测试应用测试版的应用。"
+                      data-ru="💡 Что такое TestFlight? Это официальное приложение Apple для тестирования бета-версий приложений перед их выпуском. "
+                      data-ja="💡 TestFlightとは？リリース前のアプリのベータ版をテストするためのApple公式アプリです。"
+                      data-ko="💡 TestFlight란? 앱 출시 전 베타 버전을 테스트하기 위한 Apple 공식 앱입니다. ">💡 What is TestFlight? It's Apple's official app for testing beta versions of apps before they're released. </span>
+                <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" data-en="Download TestFlight →" data-it="Scarica TestFlight →" data-es="Descargar TestFlight →" data-fr="Télécharger TestFlight →" data-de="TestFlight herunterladen →" data-pt="Baixar TestFlight →" data-zh="下载 TestFlight →" data-ru="Скачать TestFlight →" data-ja="TestFlightをダウンロード →" data-ko="TestFlight 다운로드 →">Download TestFlight →</a>
+            </div>
+
+            <!-- Android Coming Soon -->
+            <div class="android-section">
+                <h3 data-en="🤖 Android Coming Soon" 
+                    data-it="🤖 Android in Arrivo"
+                    data-es="🤖 Android Próximamente"
+                    data-fr="🤖 Android Bientôt"
+                    data-de="🤖 Android Demnächst"
+                    data-pt="🤖 Android Em Breve"
+                    data-zh="🤖 Android 即将推出"
+                    data-ru="🤖 Android Скоро"
+                    data-ja="🤖 Android 近日公開"
+                    data-ko="🤖 Android 출시 예정">🤖 Android Coming Soon</h3>
+                <p data-en="We're working on bringing our apps to Android. Stay tuned!" 
+                   data-it="Stiamo lavorando per portare le nostre app su Android. Resta sintonizzato!"
+                   data-es="Estamos trabajando para llevar nuestras apps a Android. ¡Mantente atento!"
+                   data-fr="Nous travaillons à porter nos apps sur Android. Restez à l'écoute !"
+                   data-de="Wir arbeiten daran, unsere Apps auf Android zu bringen. Bleiben Sie dran!"
+                   data-pt="Estamos trabalhando para trazer nossos apps para Android. Fique ligado!"
+                   data-zh="我们正在努力将我们的应用程序带到Android。敬请期待！"
+                   data-ru="Мы работаем над переносом наших приложений на Android. Следите за обновлениями!"
+                   data-ja="Androidへのアプリ展開に取り組んでいます。お楽しみに！"
+                   data-ko="Android에 앱을 출시하기 위해 노력하고 있습니다. 기대해 주세요!">We're working on bringing our apps to Android. Stay tuned!</p>
+            </div>
+        </section>
+        
+        <section id="support">
+            <h2 data-en="💬 Support" 
+                data-it="💬 Supporto"
+                data-es="💬 Soporte"
+                data-fr="💬 Support"
+                data-de="💬 Support"
+                data-pt="💬 Suporte"
+                data-zh="💬 支持"
+                data-ru="💬 Поддержка"
+                data-ja="💬 サポート"
+                data-ko="💬 지원">💬 Support</h2>
+            <div class="support-info">
+                <p data-en="Need help with one of our apps? Have a suggestion or found a bug?<br>We'd love to hear from you!" 
+                   data-it="Hai bisogno di aiuto con una delle nostre app? Hai un suggerimento o hai trovato un bug?<br>Ci piacerebbe sentirti!"
+                   data-es="¿Necesitas ayuda con una de nuestras apps? ¿Tienes una sugerencia o encontraste un error?<br>¡Nos encantaría saber de ti!"
+                   data-fr="Besoin d'aide avec l'une de nos apps ? Vous avez une suggestion ou trouvé un bug ?<br>Nous serions ravis de vous entendre !"
+                   data-de="Brauchen Sie Hilfe mit einer unserer Apps? Haben Sie einen Vorschlag oder einen Fehler gefunden?<br>Wir würden uns freuen, von Ihnen zu hören!"
+                   data-pt="Precisa de ajuda com um de nossos apps? Tem uma sugestão ou encontrou um bug?<br>Adoraríamos ouvir você!"
+                   data-zh="需要我们应用的帮助？有建议或发现了bug？<br>我们很乐意听取您的意见！"
+                   data-ru="Нужна помощь с одним из наших приложений? Есть предложение или нашли ошибку?<br>Мы будем рады услышать вас!"
+                   data-ja="アプリについてお困りですか？ご提案やバグを見つけましたか？<br>ぜひご連絡ください！"
+                   data-ko="앱에 도움이 필요하신가요? 제안이나 버그를 발견하셨나요?<br>여러분의 의견을 듣고 싶습니다!">Need help with one of our apps? Have a suggestion or found a bug?<br>We'd love to hear from you!</p>
+                <a href="mailto:saimon.programmi@gmail.com" class="contact-btn" data-en="📧 Contact Us" data-it="📧 Contattaci" data-es="📧 Contáctanos" data-fr="📧 Contactez-nous" data-de="📧 Kontaktieren Sie uns" data-pt="📧 Fale Conosco" data-zh="📧 联系我们" data-ru="📧 Связаться с нами" data-ja="📧 お問い合わせ" data-ko="📧 문의하기">📧 Contact Us</a>
+            </div>
+        </section>
+        
+        <section id="privacy">
+            <h2 data-en="🔒 Privacy Policy" 
+                data-it="🔒 Informativa Privacy"
+                data-es="🔒 Política de Privacidad"
+                data-fr="🔒 Politique de Confidentialité"
+                data-de="🔒 Datenschutzrichtlinie"
+                data-pt="🔒 Política de Privacidade"
+                data-zh="🔒 隐私政策"
+                data-ru="🔒 Политика конфиденциальности"
+                data-ja="🔒 プライバシーポリシー"
+                data-ko="🔒 개인정보 처리방침">🔒 Privacy Policy</h2>
+            <div class="privacy-content">
+                <p><strong data-en="Last updated:" 
+                           data-it="Ultimo aggiornamento:"
+                           data-es="Última actualización:"
+                           data-fr="Dernière mise à jour :"
+                           data-de="Zuletzt aktualisiert:"
+                           data-pt="Última atualização:"
+                           data-zh="最后更新："
+                           data-ru="Последнее обновление:"
+                           data-ja="最終更新日："
+                           data-ko="최종 업데이트:">Last updated:</strong> 
+                    <span data-en="February 2026" 
+                          data-it="Febbraio 2026"
+                          data-es="Febrero 2026"
+                          data-fr="Février 2026"
+                          data-de="Februar 2026"
+                          data-pt="Fevereiro 2026"
+                          data-zh="2026年2月"
+                          data-ru="Февраль 2026"
+                          data-ja="2026年2月"
+                          data-ko="2026년 2월">February 2026</span></p>
+                
+                <h3 data-en="Introduction" 
+                    data-it="Introduzione"
+                    data-es="Introducción"
+                    data-fr="Introduction"
+                    data-de="Einleitung"
+                    data-pt="Introdução"
+                    data-zh="简介"
+                    data-ru="Введение"
+                    data-ja="はじめに"
+                    data-ko="소개">Introduction</h3>
+                <p data-en="S@imon Apps ('we', 'our', or 'us') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile applications." 
+                   data-it="S@imon Apps ('noi' o 'nostro') si impegna a proteggere la tua privacy. Questa Informativa Privacy spiega come raccogliamo, utilizziamo e proteggiamo le tue informazioni quando utilizzi le nostre applicazioni mobili."
+                   data-es="S@imon Apps ('nosotros' o 'nuestro') se compromete a proteger tu privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información cuando utilizas nuestras aplicaciones móviles."
+                   data-fr="S@imon Apps ('nous' ou 'notre') s'engage à protéger votre vie privée. Cette Politique de Confidentialité explique comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez nos applications mobiles."
+                   data-de="S@imon Apps ('wir' oder 'unser') verpflichtet sich, Ihre Privatsphäre zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre Informationen sammeln, verwenden und schützen, wenn Sie unsere mobilen Anwendungen nutzen."
+                   data-pt="S@imon Apps ('nós' ou 'nosso') está comprometido em proteger sua privacidade. Esta Política de Privacidade explica como coletamos, usamos e protegemos suas informações quando você usa nossos aplicativos móveis."
+                   data-zh="S@imon Apps（"我们"）致力于保护您的隐私。本隐私政策解释了当您使用我们的移动应用程序时，我们如何收集、使用和保护您的信息。"
+                   data-ru="S@imon Apps ('мы' или 'наш') стремится защитить вашу конфиденциальность. Данная Политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию при использовании наших мобильных приложений."
+                   data-ja="S@imon Apps（「当社」）は、お客様のプライバシー保護に取り組んでいます。このプライバシーポリシーでは、当社のモバイルアプリケーションをご利用いただく際の情報の収集、使用、保護方法について説明します。"
+                   data-ko="S@imon Apps('당사')는 귀하의 개인정보 보호를 위해 최선을 다하고 있습니다. 본 개인정보 처리방침은 당사의 모바일 애플리케이션 사용 시 정보를 수집, 사용 및 보호하는 방법을 설명합니다.">S@imon Apps ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile applications.</p>
+                
+                <h3 data-en="Information We Collect" 
+                    data-it="Informazioni che Raccogliamo"
+                    data-es="Información que Recopilamos"
+                    data-fr="Informations que Nous Collectons"
+                    data-de="Informationen, die Wir Sammeln"
+                    data-pt="Informações que Coletamos"
+                    data-zh="我们收集的信息"
+                    data-ru="Информация, которую мы собираем"
+                    data-ja="収集する情報"
+                    data-ko="수집하는 정보">Information We Collect</h3>
+                <p data-en="Our apps may collect the following types of information:" 
+                   data-it="Le nostre app possono raccogliere i seguenti tipi di informazioni:"
+                   data-es="Nuestras apps pueden recopilar los siguientes tipos de información:"
+                   data-fr="Nos apps peuvent collecter les types d'informations suivants :"
+                   data-de="Unsere Apps können folgende Arten von Informationen sammeln:"
+                   data-pt="Nossos apps podem coletar os seguintes tipos de informações:"
+                   data-zh="我们的应用可能会收集以下类型的信息："
+                   data-ru="Наши приложения могут собирать следующие типы информации:"
+                   data-ja="当社のアプリは以下の種類の情報を収集する場合があります："
+                   data-ko="당사의 앱은 다음과 같은 유형의 정보를 수집할 수 있습니다:">Our apps may collect the following types of information:</p>
+                <ul>
+                    <li><strong data-en="Device Information:" data-it="Informazioni sul Dispositivo:" data-es="Información del Dispositivo:" data-fr="Informations sur l'Appareil :" data-de="Geräteinformationen:" data-pt="Informações do Dispositivo:" data-zh="设备信息：" data-ru="Информация об устройстве:" data-ja="デバイス情報：" data-ko="기기 정보:">Device Information:</strong> 
+                        <span data-en="Device type, operating system, unique device identifiers" data-it="Tipo di dispositivo, sistema operativo, identificatori univoci del dispositivo" data-es="Tipo de dispositivo, sistema operativo, identificadores únicos del dispositivo" data-fr="Type d'appareil, système d'exploitation, identifiants uniques de l'appareil" data-de="Gerätetyp, Betriebssystem, eindeutige Gerätekennungen" data-pt="Tipo de dispositivo, sistema operacional, identificadores únicos do dispositivo" data-zh="设备类型、操作系统、唯一设备标识符" data-ru="Тип устройства, операционная система, уникальные идентификаторы устройства" data-ja="デバイスの種類、オペレーティングシステム、一意のデバイス識別子" data-ko="기기 유형, 운영 체제, 고유 기기 식별자">Device type, operating system, unique device identifiers</span></li>
+                    <li><strong data-en="Usage Data:" data-it="Dati di Utilizzo:" data-es="Datos de Uso:" data-fr="Données d'Utilisation :" data-de="Nutzungsdaten:" data-pt="Dados de Uso:" data-zh="使用数据：" data-ru="Данные об использовании:" data-ja="利用データ：" data-ko="사용 데이터:">Usage Data:</strong> 
+                        <span data-en="App interactions, features used, time spent in app" data-it="Interazioni con l'app, funzionalità utilizzate, tempo trascorso nell'app" data-es="Interacciones con la app, funciones utilizadas, tiempo en la app" data-fr="Interactions avec l'app, fonctionnalités utilisées, temps passé dans l'app" data-de="App-Interaktionen, genutzte Funktionen, in der App verbrachte Zeit" data-pt="Interações com o app, recursos utilizados, tempo gasto no app" data-zh="应用交互、使用的功能、在应用中花费的时间" data-ru="Взаимодействие с приложением, используемые функции, время в приложении" data-ja="アプリの操作、使用機能、アプリ内滞在時間" data-ko="앱 상호작용, 사용 기능, 앱 사용 시간">App interactions, features used, time spent in app</span></li>
+                    <li><strong data-en="Advertising Data:" data-it="Dati Pubblicitari:" data-es="Datos de Publicidad:" data-fr="Données Publicitaires :" data-de="Werbedaten:" data-pt="Dados de Publicidade:" data-zh="广告数据：" data-ru="Рекламные данные:" data-ja="広告データ：" data-ko="광고 데이터:">Advertising Data:</strong> 
+                        <span data-en="Ad interactions for personalized advertising" data-it="Interazioni pubblicitarie per pubblicità personalizzata" data-es="Interacciones publicitarias para publicidad personalizada" data-fr="Interactions publicitaires pour la publicité personnalisée" data-de="Werbeinteraktionen für personalisierte Werbung" data-pt="Interações publicitárias para publicidade personalizada" data-zh="用于个性化广告的广告互动" data-ru="Взаимодействие с рекламой для персонализированной рекламы" data-ja="パーソナライズド広告のための広告インタラクション" data-ko="맞춤형 광고를 위한 광고 상호작용">Ad interactions for personalized advertising</span></li>
+                </ul>
+                
+                <h3 data-en="Data Storage (iCashly)" data-it="Archiviazione Dati (iCashly)" data-es="Almacenamiento de Datos (iCashly)" data-fr="Stockage des Données (iCashly)" data-de="Datenspeicherung (iCashly)" data-pt="Armazenamento de Dados (iCashly)" data-zh="数据存储 (iCashly)" data-ru="Хранение данных (iCashly)" data-ja="データ保存 (iCashly)" data-ko="데이터 저장 (iCashly)">Data Storage (iCashly)</h3>
+                
+                <h4 data-en="Personal Data (Offline)" data-it="Dati Personali (Offline)" data-es="Datos Personales (Sin Conexión)" data-fr="Données Personnelles (Hors Ligne)" data-de="Persönliche Daten (Offline)" data-pt="Dados Pessoais (Offline)" data-zh="个人数据（离线）" data-ru="Личные данные (Офлайн)" data-ja="個人データ（オフライン）" data-ko="개인 데이터 (오프라인)">Personal Data (Offline)</h4>
+                <p data-en="iCashly stores all your personal financial data locally on your device. We do not have access to your personal financial information, transactions, or budgets. Your personal data never leaves your device unless you explicitly choose to export it." 
+                   data-it="iCashly archivia tutti i tuoi dati finanziari personali localmente sul tuo dispositivo. Non abbiamo accesso alle tue informazioni finanziarie personali, transazioni o budget. I tuoi dati personali non lasciano mai il tuo dispositivo a meno che tu non scelga esplicitamente di esportarli."
+                   data-es="iCashly almacena todos tus datos financieros personales localmente en tu dispositivo. No tenemos acceso a tu información financiera personal, transacciones o presupuestos. Tus datos personales nunca salen de tu dispositivo a menos que elijas exportarlos explícitamente."
+                   data-fr="iCashly stocke toutes vos données financières personnelles localement sur votre appareil. Nous n'avons pas accès à vos informations financières personnelles, transactions ou budgets. Vos données personnelles ne quittent jamais votre appareil sauf si vous choisissez explicitement de les exporter."
+                   data-de="iCashly speichert alle Ihre persönlichen Finanzdaten lokal auf Ihrem Gerät. Wir haben keinen Zugriff auf Ihre persönlichen Finanzinformationen, Transaktionen oder Budgets. Ihre persönlichen Daten verlassen Ihr Gerät nie, es sei denn, Sie entscheiden sich ausdrücklich für den Export."
+                   data-pt="iCashly armazena todos os seus dados financeiros pessoais localmente no seu dispositivo. Não temos acesso às suas informações financeiras pessoais, transações ou orçamentos. Seus dados pessoais nunca saem do seu dispositivo, a menos que você escolha exportá-los explicitamente."
+                   data-zh="iCashly将您的所有个人财务数据存储在您的设备本地。我们无法访问您的个人财务信息、交易或预算。除非您明确选择导出，否则您的个人数据永远不会离开您的设备。"
+                   data-ru="iCashly хранит все ваши личные финансовые данные локально на вашем устройстве. Мы не имеем доступа к вашей личной финансовой информации, транзакциям или бюджетам. Ваши личные данные никогда не покидают ваше устройство, если вы явно не решите их экспортировать."
+                   data-ja="iCashlyは、すべての個人財務データをデバイスにローカル保存します。当社は、お客様の個人的な財務情報、取引、予算にアクセスできません。明示的にエクスポートを選択しない限り、個人データがデバイスから出ることはありません。"
+                   data-ko="iCashly는 모든 개인 재정 데이터를 기기에 로컬로 저장합니다. 당사는 귀하의 개인 재정 정보, 거래 또는 예산에 접근할 수 없습니다. 명시적으로 내보내기를 선택하지 않는 한 개인 데이터는 기기를 떠나지 않습니다.">iCashly stores all your personal financial data locally on your device. We do not have access to your personal financial information, transactions, or budgets. Your personal data never leaves your device unless you explicitly choose to export it.</p>
+                
+                <h4 data-en="Groups (Offline Mode)" data-it="Gruppi (Modalità Offline)" data-es="Grupos (Modo Sin Conexión)" data-fr="Groupes (Mode Hors Ligne)" data-de="Gruppen (Offline-Modus)" data-pt="Grupos (Modo Offline)" data-zh="群组（离线模式）" data-ru="Группы (Офлайн-режим)" data-ja="グループ（オフラインモード）" data-ko="그룹 (오프라인 모드)">Groups (Offline Mode)</h4>
+                <p data-en="When you create an Offline Group, all group data is stored only on your device. No data is transmitted to any server. You can share group information with others by exporting PDFs." 
+                   data-it="Quando crei un Gruppo Offline, tutti i dati del gruppo vengono archiviati solo sul tuo dispositivo. Nessun dato viene trasmesso a server esterni. Puoi condividere le informazioni del gruppo esportando PDF."
+                   data-es="Cuando creas un Grupo Sin Conexión, todos los datos del grupo se almacenan solo en tu dispositivo. No se transmiten datos a ningún servidor. Puedes compartir información del grupo exportando PDFs."
+                   data-fr="Lorsque vous créez un Groupe Hors Ligne, toutes les données du groupe sont stockées uniquement sur votre appareil. Aucune donnée n'est transmise à un serveur. Vous pouvez partager les informations du groupe en exportant des PDFs."
+                   data-de="Wenn Sie eine Offline-Gruppe erstellen, werden alle Gruppendaten nur auf Ihrem Gerät gespeichert. Es werden keine Daten an Server übertragen. Sie können Gruppeninformationen durch PDF-Export teilen."
+                   data-pt="Quando você cria um Grupo Offline, todos os dados do grupo são armazenados apenas no seu dispositivo. Nenhum dado é transmitido para servidores. Você pode compartilhar informações do grupo exportando PDFs."
+                   data-zh="当您创建离线群组时，所有群组数据仅存储在您的设备上。不会向任何服务器传输数据。您可以通过导出PDF与他人共享群组信息。"
+                   data-ru="Когда вы создаёте Офлайн-группу, все данные группы хранятся только на вашем устройстве. Никакие данные не передаются на серверы. Вы можете поделиться информацией группы, экспортировав PDF."
+                   data-ja="オフライングループを作成すると、すべてのグループデータはデバイスにのみ保存されます。サーバーにデータは送信されません。PDFをエクスポートしてグループ情報を共有できます。"
+                   data-ko="오프라인 그룹을 만들면 모든 그룹 데이터가 기기에만 저장됩니다. 서버로 데이터가 전송되지 않습니다. PDF를 내보내 그룹 정보를 공유할 수 있습니다.">When you create an Offline Group, all group data is stored only on your device. No data is transmitted to any server. You can share group information with others by exporting PDFs.</p>
+                
+                <h4 data-en="Groups (Online Mode) - Optional" data-it="Gruppi (Modalità Online) - Opzionale" data-es="Grupos (Modo En Línea) - Opcional" data-fr="Groupes (Mode En Ligne) - Optionnel" data-de="Gruppen (Online-Modus) - Optional" data-pt="Grupos (Modo Online) - Opcional" data-zh="群组（在线模式）- 可选" data-ru="Группы (Онлайн-режим) - Опционально" data-ja="グループ（オンラインモード）- オプション" data-ko="그룹 (온라인 모드) - 선택 사항">Groups (Online Mode) - Optional</h4>
+                <p data-en="When you explicitly choose to create an Online Group, the following applies:" 
+                   data-it="Quando scegli esplicitamente di creare un Gruppo Online, si applica quanto segue:"
+                   data-es="Cuando eliges explícitamente crear un Grupo En Línea, se aplica lo siguiente:"
+                   data-fr="Lorsque vous choisissez explicitement de créer un Groupe En Ligne, les conditions suivantes s'appliquent :"
+                   data-de="Wenn Sie sich ausdrücklich für die Erstellung einer Online-Gruppe entscheiden, gilt Folgendes:"
+                   data-pt="Quando você escolhe explicitamente criar um Grupo Online, aplica-se o seguinte:"
+                   data-zh="当您明确选择创建在线群组时，适用以下条款："
+                   data-ru="Когда вы явно выбираете создание Онлайн-группы, применяется следующее:"
+                   data-ja="オンライングループの作成を明示的に選択した場合、以下が適用されます："
+                   data-ko="온라인 그룹 생성을 명시적으로 선택하면 다음이 적용됩니다:">When you explicitly choose to create an Online Group, the following applies:</p>
+                <ul>
+                    <li><strong data-en="Data Storage:" data-it="Archiviazione Dati:" data-es="Almacenamiento de Datos:" data-fr="Stockage des Données :" data-de="Datenspeicherung:" data-pt="Armazenamento de Dados:" data-zh="数据存储：" data-ru="Хранение данных:" data-ja="データ保存：" data-ko="데이터 저장:">Data Storage:</strong> 
+                        <span data-en="Group data is stored on secure Firebase servers (Google Cloud Platform) to enable real-time synchronization between group members." 
+                              data-it="I dati del gruppo vengono archiviati su server Firebase sicuri (Google Cloud Platform) per consentire la sincronizzazione in tempo reale tra i membri del gruppo."
+                              data-es="Los datos del grupo se almacenan en servidores seguros de Firebase (Google Cloud Platform) para permitir la sincronización en tiempo real entre los miembros del grupo."
+                              data-fr="Les données du groupe sont stockées sur des serveurs Firebase sécurisés (Google Cloud Platform) pour permettre la synchronisation en temps réel entre les membres du groupe."
+                              data-de="Gruppendaten werden auf sicheren Firebase-Servern (Google Cloud Platform) gespeichert, um die Echtzeit-Synchronisation zwischen Gruppenmitgliedern zu ermöglichen."
+                              data-pt="Os dados do grupo são armazenados em servidores Firebase seguros (Google Cloud Platform) para permitir sincronização em tempo real entre os membros do grupo."
+                              data-zh="群组数据存储在安全的Firebase服务器（Google Cloud Platform）上，以实现群组成员之间的实时同步。"
+                              data-ru="Данные группы хранятся на защищённых серверах Firebase (Google Cloud Platform) для обеспечения синхронизации в реальном времени между участниками группы."
+                              data-ja="グループデータは、グループメンバー間のリアルタイム同期を可能にするため、安全なFirebaseサーバー（Google Cloud Platform）に保存されます。"
+                              data-ko="그룹 데이터는 그룹 구성원 간의 실시간 동기화를 위해 안전한 Firebase 서버(Google Cloud Platform)에 저장됩니다.">Group data is stored on secure Firebase servers (Google Cloud Platform) to enable real-time synchronization between group members.</span></li>
+                    <li><strong data-en="Access Control:" data-it="Controllo Accessi:" data-es="Control de Acceso:" data-fr="Contrôle d'Accès :" data-de="Zugriffskontrolle:" data-pt="Controle de Acesso:" data-zh="访问控制：" data-ru="Контроль доступа:" data-ja="アクセス制御：" data-ko="접근 제어:">Access Control:</strong> 
+                        <span data-en="Only you and the members you invite can access the group data. Each group is protected by a unique code that you control." 
+                              data-it="Solo tu e i membri che inviti possono accedere ai dati del gruppo. Ogni gruppo è protetto da un codice univoco che controlli tu."
+                              data-es="Solo tú y los miembros que invites pueden acceder a los datos del grupo. Cada grupo está protegido por un código único que tú controlas."
+                              data-fr="Seuls vous et les membres que vous invitez peuvent accéder aux données du groupe. Chaque groupe est protégé par un code unique que vous contrôlez."
+                              data-de="Nur Sie und die von Ihnen eingeladenen Mitglieder können auf die Gruppendaten zugreifen. Jede Gruppe ist durch einen eindeutigen Code geschützt, den Sie kontrollieren."
+                              data-pt="Apenas você e os membros que você convidar podem acessar os dados do grupo. Cada grupo é protegido por um código único que você controla."
+                              data-zh="只有您和您邀请的成员才能访问群组数据。每个群组都受您控制的唯一代码保护。"
+                              data-ru="Только вы и приглашённые вами участники могут получить доступ к данным группы. Каждая группа защищена уникальным кодом, который вы контролируете."
+                              data-ja="あなたと招待したメンバーのみがグループデータにアクセスできます。各グループはあなたが管理する一意のコードで保護されています。"
+                              data-ko="귀하와 초대한 구성원만 그룹 데이터에 접근할 수 있습니다. 각 그룹은 귀하가 관리하는 고유 코드로 보호됩니다.">Only you and the members you invite can access the group data. Each group is protected by a unique code that you control.</span></li>
+                    <li><strong data-en="What We Store:" data-it="Cosa Archiviamo:" data-es="Qué Almacenamos:" data-fr="Ce Que Nous Stockons :" data-de="Was Wir Speichern:" data-pt="O Que Armazenamos:" data-zh="我们存储什么：" data-ru="Что мы храним:" data-ja="保存内容：" data-ko="저장 내용:">What We Store:</strong> 
+                        <span data-en="Group name, member names, transactions, budgets, and savings goals associated with the group. We do NOT store personal identification documents, bank account numbers, or login credentials." 
+                              data-it="Nome del gruppo, nomi dei membri, transazioni, budget e obiettivi di risparmio associati al gruppo. NON archiviamo documenti di identificazione personale, numeri di conto bancario o credenziali di accesso."
+                              data-es="Nombre del grupo, nombres de miembros, transacciones, presupuestos y metas de ahorro asociadas al grupo. NO almacenamos documentos de identificación personal, números de cuenta bancaria o credenciales de inicio de sesión."
+                              data-fr="Nom du groupe, noms des membres, transactions, budgets et objectifs d'épargne associés au groupe. Nous NE stockons PAS de documents d'identification personnelle, numéros de compte bancaire ou identifiants de connexion."
+                              data-de="Gruppenname, Mitgliedernamen, Transaktionen, Budgets und Sparziele der Gruppe. Wir speichern KEINE persönlichen Ausweisdokumente, Bankkontonummern oder Anmeldedaten."
+                              data-pt="Nome do grupo, nomes dos membros, transações, orçamentos e metas de poupança associadas ao grupo. NÃO armazenamos documentos de identificação pessoal, números de conta bancária ou credenciais de login."
+                              data-zh="群组名称、成员姓名、与群组相关的交易、预算和储蓄目标。我们不存储个人身份证件、银行账号或登录凭证。"
+                              data-ru="Название группы, имена участников, транзакции, бюджеты и цели сбережений, связанные с группой. Мы НЕ храним документы, удостоверяющие личность, номера банковских счетов или учётные данные."
+                              data-ja="グループ名、メンバー名、グループに関連する取引、予算、貯蓄目標。個人識別書類、銀行口座番号、ログイン資格情報は保存しません。"
+                              data-ko="그룹 이름, 구성원 이름, 그룹과 관련된 거래, 예산 및 저축 목표. 개인 신분증, 은행 계좌 번호 또는 로그인 자격 증명은 저장하지 않습니다.">Group name, member names, transactions, budgets, and savings goals associated with the group. We do NOT store personal identification documents, bank account numbers, or login credentials.</span></li>
+                    <li><strong data-en="Data Encryption:" data-it="Crittografia Dati:" data-es="Cifrado de Datos:" data-fr="Chiffrement des Données :" data-de="Datenverschlüsselung:" data-pt="Criptografia de Dados:" data-zh="数据加密：" data-ru="Шифрование данных:" data-ja="データ暗号化：" data-ko="데이터 암호화:">Data Encryption:</strong> 
+                        <span data-en="All data is encrypted in transit (TLS/SSL) and at rest." 
+                              data-it="Tutti i dati sono crittografati in transito (TLS/SSL) e a riposo."
+                              data-es="Todos los datos están cifrados en tránsito (TLS/SSL) y en reposo."
+                              data-fr="Toutes les données sont chiffrées en transit (TLS/SSL) et au repos."
+                              data-de="Alle Daten sind während der Übertragung (TLS/SSL) und im Ruhezustand verschlüsselt."
+                              data-pt="Todos os dados são criptografados em trânsito (TLS/SSL) e em repouso."
+                              data-zh="所有数据在传输中（TLS/SSL）和静态时都经过加密。"
+                              data-ru="Все данные зашифрованы при передаче (TLS/SSL) и в состоянии покоя."
+                              data-ja="すべてのデータは転送中（TLS/SSL）および保存時に暗号化されています。"
+                              data-ko="모든 데이터는 전송 중(TLS/SSL) 및 저장 시 암호화됩니다.">All data is encrypted in transit (TLS/SSL) and at rest.</span></li>
+                    <li><strong data-en="No Third-Party Access:" data-it="Nessun Accesso di Terze Parti:" data-es="Sin Acceso de Terceros:" data-fr="Pas d'Accès Tiers :" data-de="Kein Zugriff Dritter:" data-pt="Sem Acesso de Terceiros:" data-zh="无第三方访问：" data-ru="Без доступа третьих лиц:" data-ja="第三者アクセスなし：" data-ko="제3자 접근 없음:">No Third-Party Access:</strong> 
+                        <span data-en="We (S@imon Apps) do not access, sell, or share your group financial data with anyone. The data exists solely to provide the synchronization service." 
+                              data-it="Noi (S@imon Apps) non accediamo, vendiamo o condividiamo i dati finanziari del tuo gruppo con nessuno. I dati esistono esclusivamente per fornire il servizio di sincronizzazione."
+                              data-es="Nosotros (S@imon Apps) no accedemos, vendemos ni compartimos los datos financieros de tu grupo con nadie. Los datos existen únicamente para proporcionar el servicio de sincronización."
+                              data-fr="Nous (S@imon Apps) n'accédons pas, ne vendons pas et ne partageons pas les données financières de votre groupe avec quiconque. Les données existent uniquement pour fournir le service de synchronisation."
+                              data-de="Wir (S@imon Apps) greifen nicht auf Ihre Gruppenfinanzdaten zu, verkaufen oder teilen sie nicht mit Dritten. Die Daten existieren ausschließlich zur Bereitstellung des Synchronisierungsdienstes."
+                              data-pt="Nós (S@imon Apps) não acessamos, vendemos ou compartilhamos os dados financeiros do seu grupo com ninguém. Os dados existem apenas para fornecer o serviço de sincronização."
+                              data-zh="我们（S@imon Apps）不会访问、出售或与任何人共享您的群组财务数据。数据仅用于提供同步服务。"
+                              data-ru="Мы (S@imon Apps) не получаем доступ, не продаём и не делимся финансовыми данными вашей группы ни с кем. Данные существуют исключительно для предоставления услуги синхронизации."
+                              data-ja="当社（S@imon Apps）は、グループの財務データにアクセスしたり、販売したり、誰とも共有したりしません。データは同期サービスを提供するためだけに存在します。"
+                              data-ko="당사(S@imon Apps)는 귀하의 그룹 재정 데이터에 접근하거나, 판매하거나, 누구와도 공유하지 않습니다. 데이터는 동기화 서비스를 제공하기 위해서만 존재합니다.">We (S@imon Apps) do not access, sell, or share your group financial data with anyone. The data exists solely to provide the synchronization service.</span></li>
+                    <li><strong data-en="Data Deletion:" data-it="Cancellazione Dati:" data-es="Eliminación de Datos:" data-fr="Suppression des Données :" data-de="Datenlöschung:" data-pt="Exclusão de Dados:" data-zh="数据删除：" data-ru="Удаление данных:" data-ja="データ削除：" data-ko="데이터 삭제:">Data Deletion:</strong> 
+                        <span data-en="When a group owner deletes an Online Group, all associated data is permanently removed from our servers within 30 days." 
+                              data-it="Quando il proprietario di un gruppo elimina un Gruppo Online, tutti i dati associati vengono rimossi permanentemente dai nostri server entro 30 giorni."
+                              data-es="Cuando el propietario de un grupo elimina un Grupo En Línea, todos los datos asociados se eliminan permanentemente de nuestros servidores en un plazo de 30 días."
+                              data-fr="Lorsqu'un propriétaire de groupe supprime un Groupe En Ligne, toutes les données associées sont définitivement supprimées de nos serveurs dans les 30 jours."
+                              data-de="Wenn ein Gruppenbesitzer eine Online-Gruppe löscht, werden alle zugehörigen Daten innerhalb von 30 Tagen dauerhaft von unseren Servern entfernt."
+                              data-pt="Quando um proprietário de grupo exclui um Grupo Online, todos os dados associados são permanentemente removidos de nossos servidores em até 30 dias."
+                              data-zh="当群组所有者删除在线群组时，所有相关数据将在30天内从我们的服务器永久删除。"
+                              data-ru="Когда владелец группы удаляет Онлайн-группу, все связанные данные окончательно удаляются с наших серверов в течение 30 дней."
+                              data-ja="グループオーナーがオンライングループを削除すると、関連するすべてのデータは30日以内にサーバーから完全に削除されます。"
+                              data-ko="그룹 소유자가 온라인 그룹을 삭제하면 모든 관련 데이터가 30일 이내에 서버에서 영구적으로 제거됩니다.">When a group owner deletes an Online Group, all associated data is permanently removed from our servers within 30 days.</span></li>
+                </ul>
+                
+                <h3 data-en="Third-Party Services" data-it="Servizi di Terze Parti" data-es="Servicios de Terceros" data-fr="Services Tiers" data-de="Dienste Dritter" data-pt="Serviços de Terceiros" data-zh="第三方服务" data-ru="Сторонние сервисы" data-ja="サードパーティサービス" data-ko="타사 서비스">Third-Party Services</h3>
+                <p data-en="We use Google AdMob to display ads in our apps. AdMob may use cookies and device identifiers to provide personalized ads. You can opt out of personalized advertising in your device settings." 
+                   data-it="Utilizziamo Google AdMob per mostrare annunci nelle nostre app. AdMob può utilizzare cookie e identificatori del dispositivo per fornire annunci personalizzati. Puoi disattivare la pubblicità personalizzata nelle impostazioni del dispositivo."
+                   data-es="Usamos Google AdMob para mostrar anuncios en nuestras apps. AdMob puede usar cookies e identificadores de dispositivo para proporcionar anuncios personalizados. Puedes desactivar la publicidad personalizada en la configuración de tu dispositivo."
+                   data-fr="Nous utilisons Google AdMob pour afficher des publicités dans nos apps. AdMob peut utiliser des cookies et des identifiants d'appareil pour fournir des publicités personnalisées. Vous pouvez désactiver la publicité personnalisée dans les paramètres de votre appareil."
+                   data-de="Wir verwenden Google AdMob, um Anzeigen in unseren Apps anzuzeigen. AdMob kann Cookies und Gerätekennungen verwenden, um personalisierte Anzeigen bereitzustellen. Sie können personalisierte Werbung in Ihren Geräteeinstellungen deaktivieren."
+                   data-pt="Usamos o Google AdMob para exibir anúncios em nossos apps. O AdMob pode usar cookies e identificadores de dispositivo para fornecer anúncios personalizados. Você pode desativar a publicidade personalizada nas configurações do seu dispositivo."
+                   data-zh="我们使用Google AdMob在应用中展示广告。AdMob可能会使用cookie和设备标识符来提供个性化广告。您可以在设备设置中选择退出个性化广告。"
+                   data-ru="Мы используем Google AdMob для показа рекламы в наших приложениях. AdMob может использовать файлы cookie и идентификаторы устройств для предоставления персонализированной рекламы. Вы можете отказаться от персонализированной рекламы в настройках устройства."
+                   data-ja="当社のアプリではGoogle AdMobを使用して広告を表示しています。AdMobは、パーソナライズド広告を提供するためにCookieやデバイス識別子を使用する場合があります。デバイス設定でパーソナライズド広告をオプトアウトできます。"
+                   data-ko="당사는 Google AdMob을 사용하여 앱에 광고를 표시합니다. AdMob은 맞춤형 광고를 제공하기 위해 쿠키와 기기 식별자를 사용할 수 있습니다. 기기 설정에서 맞춤형 광고를 거부할 수 있습니다.">We use Google AdMob to display ads in our apps. AdMob may use cookies and device identifiers to provide personalized ads. You can opt out of personalized advertising in your device settings.</p>
+                
+                <h3 data-en="Your Rights" data-it="I Tuoi Diritti" data-es="Tus Derechos" data-fr="Vos Droits" data-de="Ihre Rechte" data-pt="Seus Direitos" data-zh="您的权利" data-ru="Ваши права" data-ja="お客様の権利" data-ko="귀하의 권리">Your Rights</h3>
+                <p data-en="You have the right to:" data-it="Hai il diritto di:" data-es="Tienes derecho a:" data-fr="Vous avez le droit de :" data-de="Sie haben das Recht:" data-pt="Você tem o direito de:" data-zh="您有权：" data-ru="Вы имеете право:" data-ja="お客様には以下の権利があります：" data-ko="귀하는 다음의 권리가 있습니다:">You have the right to:</p>
+                <ul>
+                    <li data-en="Opt out of personalized advertising" data-it="Disattivare la pubblicità personalizzata" data-es="Desactivar la publicidad personalizada" data-fr="Désactiver la publicité personnalisée" data-de="Personalisierte Werbung deaktivieren" data-pt="Desativar a publicidade personalizada" data-zh="选择退出个性化广告" data-ru="Отказаться от персонализированной рекламы" data-ja="パーソナライズド広告をオプトアウトする" data-ko="맞춤형 광고 거부">Opt out of personalized advertising</li>
+                    <li data-en="Request deletion of your data" data-it="Richiedere la cancellazione dei tuoi dati" data-es="Solicitar la eliminación de tus datos" data-fr="Demander la suppression de vos données" data-de="Die Löschung Ihrer Daten anfordern" data-pt="Solicitar a exclusão de seus dados" data-zh="请求删除您的数据" data-ru="Запросить удаление ваших данных" data-ja="データの削除を要求する" data-ko="데이터 삭제 요청">Request deletion of your data</li>
+                    <li data-en="Contact us with privacy concerns" data-it="Contattarci per questioni relative alla privacy" data-es="Contactarnos con inquietudes sobre privacidad" data-fr="Nous contacter pour des questions de confidentialité" data-de="Uns bei Datenschutzbedenken kontaktieren" data-pt="Entrar em contato conosco sobre questões de privacidade" data-zh="就隐私问题联系我们" data-ru="Связаться с нами по вопросам конфиденциальности" data-ja="プライバシーに関する懸念についてお問い合わせ" data-ko="개인정보 관련 문의">Contact us with privacy concerns</li>
+                </ul>
+                
+                <h3 data-en="Changes to This Policy" data-it="Modifiche a Questa Policy" data-es="Cambios a Esta Política" data-fr="Modifications de Cette Politique" data-de="Änderungen dieser Richtlinie" data-pt="Alterações nesta Política" data-zh="本政策的变更" data-ru="Изменения в этой политике" data-ja="本ポリシーの変更" data-ko="본 방침의 변경">Changes to This Policy</h3>
+                <p data-en="We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page." 
+                   data-it="Potremmo aggiornare questa Informativa Privacy di tanto in tanto. Ti informeremo di eventuali modifiche pubblicando la nuova policy su questa pagina."
+                   data-es="Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificaremos de cualquier cambio publicando la nueva política en esta página."
+                   data-fr="Nous pouvons mettre à jour cette Politique de Confidentialité de temps en temps. Nous vous informerons de tout changement en publiant la nouvelle politique sur cette page."
+                   data-de="Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite veröffentlichen."
+                   data-pt="Podemos atualizar esta Política de Privacidade de tempos em tempos. Notificaremos você sobre quaisquer alterações publicando a nova política nesta página."
+                   data-zh="我们可能会不时更新本隐私政策。我们将通过在此页面上发布新政策来通知您任何更改。"
+                   data-ru="Мы можем время от времени обновлять эту Политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив новую политику на этой странице."
+                   data-ja="当社は本プライバシーポリシーを随時更新する場合があります。変更がある場合は、このページに新しいポリシーを掲載してお知らせします。"
+                   data-ko="당사는 수시로 본 개인정보 처리방침을 업데이트할 수 있습니다. 변경 사항이 있을 경우 이 페이지에 새로운 방침을 게시하여 알려드립니다.">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+                
+                <h3 data-en="Contact Us" data-it="Contattaci" data-es="Contáctanos" data-fr="Contactez-nous" data-de="Kontaktieren Sie uns" data-pt="Fale Conosco" data-zh="联系我们" data-ru="Свяжитесь с нами" data-ja="お問い合わせ" data-ko="문의하기">Contact Us</h3>
+                <p data-en="If you have questions about this Privacy Policy, please contact us at:" data-it="Se hai domande su questa Informativa Privacy, contattaci a:" data-es="Si tienes preguntas sobre esta Política de Privacidad, contáctanos en:" data-fr="Si vous avez des questions sur cette Politique de Confidentialité, contactez-nous à :" data-de="Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns unter:" data-pt="Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato conosco em:" data-zh="如果您对本隐私政策有任何疑问，请通过以下方式联系我们：" data-ru="Если у вас есть вопросы об этой Политике конфиденциальности, свяжитесь с нами:" data-ja="本プライバシーポリシーについてご質問がある場合は、以下までお問い合わせください：" data-ko="본 개인정보 처리방침에 대해 질문이 있으시면 다음으로 연락해 주세요:">If you have questions about this Privacy Policy, please contact us at:</p>
+                <p><a href="mailto:saimon.programmi@gmail.com" class="contact-btn" data-en="📧 Contact Us" data-it="📧 Contattaci" data-es="📧 Contáctanos" data-fr="📧 Contactez-nous" data-de="📧 Kontaktieren Sie uns" data-pt="📧 Fale Conosco" data-zh="📧 联系我们" data-ru="📧 Связаться с нами" data-ja="📧 お問い合わせ" data-ko="📧 문의하기">📧 Contact Us</a></p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>© 2026 SaimonApps.it <span data-en="All rights reserved." data-it="Tutti i diritti riservati." data-es="Todos los derechos reservados." data-fr="Tous droits réservés." data-de="Alle Rechte vorbehalten." data-pt="Todos os direitos reservados." data-zh="保留所有权利。" data-ru="Все права защищены." data-ja="全著作権所有。" data-ko="모든 권리 보유.">All rights reserved.</span></p>
+        <p><a href="#apps" data-en="Apps" data-it="App" data-es="Apps" data-fr="Apps" data-de="Apps" data-pt="Apps" data-zh="应用" data-ru="Приложения" data-ja="アプリ" data-ko="앱">Apps</a> • 
+           <a href="#support" data-en="Support" data-it="Supporto" data-es="Soporte" data-fr="Support" data-de="Support" data-pt="Suporte" data-zh="支持" data-ru="Поддержка" data-ja="サポート" data-ko="지원">Support</a> • 
+           <a href="#privacy" data-en="Privacy Policy" data-it="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-pt="Privacidade" data-zh="隐私" data-ru="Конфиденциальность" data-ja="プライバシー" data-ko="개인정보">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        const supportedLanguages = ['en', 'it', 'es', 'fr', 'de', 'pt', 'zh', 'ru', 'ja', 'ko'];
+        
+        function getInitialLanguage() {
+            const saved = localStorage.getItem('lang');
+            if (saved && supportedLanguages.includes(saved)) return saved;
+            
+            const browserLang = navigator.language.toLowerCase().split('-')[0];
+            if (supportedLanguages.includes(browserLang)) return browserLang;
+            
+            return 'en';
+        }
+
+        function setLanguage(lang) {
+            if (!supportedLanguages.includes(lang)) lang = 'en';
+            
+            document.getElementById('lang-select').value = lang;
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+                if (text) {
+                    if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                        el.textContent = text;
+                    } else {
+                        el.innerHTML = text;
+                    }
+                }
+            });
+            
+            document.documentElement.lang = lang;
+            localStorage.setItem('lang', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialLang = getInitialLanguage();
+            setLanguage(initialLang);
+        });
+    </script>
 </body>
 </html>
-```
-
-### File 2: `app-ads.txt`
-```
-google.com, pub-2053215380495624, DIRECT, f08c47fec0942fa0

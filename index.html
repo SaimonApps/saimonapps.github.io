@@ -851,3 +851,10 @@
             localStorage.setItem('lang', lang);
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialLang = getInitialLanguage();
+            setLanguage(initialLang);
+        });
+    </script>
+</body>
+</html>
